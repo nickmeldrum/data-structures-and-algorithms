@@ -6,17 +6,23 @@
   "author": "Nick Meldrum <Nick.Meldrum@sc.com>",
   "license": "MIT",
   "scripts": {
-    "start": "yarn clean && node log-pairs.js",
+    "start": "yarn clean && node index.js",
     "watch": "nodemon -x yarn start",
-    "clean": "prettier --write *.js"
+    "clean": "prettier --write **/*.js"
   },
   "prettier": {
+    "printWidth": 120,
     "trailingComma": "es5",
     "tabWidth": 2,
+    "useTabs": false,
     "semi": false,
-    "singleQuote": true
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "arrowParens": "avoid"
   },
   "dependencies": {
+    "fs-extra": "^8.1.0",
     "nodemon": "^2.0.2",
     "prettier": "^1.19.1"
   }

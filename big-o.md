@@ -1,13 +1,26 @@
 Big O:
 describes the long-term growth rate of functions
 
-linear time
-O(n)
+O(1) constant time:
+i.e. it will always take the same time irrespective of number of inputs
+
+O(log N) Logarithmic:
+typically sorted (binary search) searching algorithms
+
+O(n) linear time:
 i.e. the time it takes to complete increases at the same rate as the number of inputs
 
-O(1)
-constant time
-i.e. it will always take the same time irrespective of number of inputs
+O(n * log(n)) Log linear:
+usually sorting ops
+
+O(n^2) Quadratic:
+2 nested loops - every el needs to compare to every other el
+
+O(2^n) Exponential:
+recursive algorithms that solve problem of size N
+
+O(n!) Factorial:
+adding a loop for every element!
 
 Worst case:
 
@@ -20,9 +33,8 @@ Remove constants: because we are only concerned with the growth rate of function
 BUT: different inputs create different notations, therefore looping through 2 inputs would be denoted as O(a + b)
 
 nested loops rule of thumb: = multiplication of growth rates:
-i.e. 1 nested loop of same input would = O(n*n) = O(n^2)
+i.e. 1 nested loop of same input would = O(n^2)
 
 rules of thumb - same indentation = add, nested indentation = multiply
 
-Drop Non Dominants:
-
+Drop Non Dominants: an extension of worst case - simplify O(n + n^2) to O(n^2) as n^2 is more significant in terms of time. The less significant terms drop effectively to 0 for very large numbers.

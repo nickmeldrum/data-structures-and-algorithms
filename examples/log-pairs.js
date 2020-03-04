@@ -8,4 +8,6 @@ const logAllPairsNSquared = boxes => {
   })
 }
 
-logAllPairsNSquared(fiveItems)
+module.exports = () => {
+  logAllPairsNSquared(fiveItems)
+}
