@@ -1,0 +1,23 @@
+{
+  "name": "ds-a",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/nickmeldrum/data-structures-and-algorithms.git",
+  "author": "Nick Meldrum <Nick.Meldrum@sc.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn clean && node log-pairs.js",
+    "watch": "nodemon -x yarn start",
+    "clean": "prettier --write *.js"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true
+  },
+  "dependencies": {
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1"
+  }
+}

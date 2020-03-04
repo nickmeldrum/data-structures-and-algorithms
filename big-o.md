@@ -19,9 +19,10 @@ Remove constants: because we are only concerned with the growth rate of function
 
 BUT: different inputs create different notations, therefore looping through 2 inputs would be denoted as O(a + b)
 
-algorithms:
+nested loops rule of thumb: = multiplication of growth rates:
+i.e. 1 nested loop of same input would = O(n*n) = O(n^2)
 
-swap integers without using a temp variable 
+rules of thumb - same indentation = add, nested indentation = multiply
 
-log all pairs of arrays
+Drop Non Dominants:
 
