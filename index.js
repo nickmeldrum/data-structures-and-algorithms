@@ -3,7 +3,7 @@ const fs = require('fs-extra')
 let justRun
 /*
  */
-justRun = 'reverse-array.js'
+justRun = 'merge-sorted-arrays.js'
 
 const runIt = filename => {
   const run = require(`./examples/${filename}`)
