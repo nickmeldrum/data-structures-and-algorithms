@@ -6,6 +6,6 @@ how to see if code is good?
  2. speed
  3. memory usage
 
-
  memory/ speed = space complexity over time complexity
  usually a trade off between memory and speed
+
