@@ -20,8 +20,8 @@ const merge = (a, b) => {
   return merged
 }
 
-module.exports = () => {
-  const arr1 = [0, 3, 4]
+const doit = () => {
+  const arr1 = [0, 3, 4, 78]
   const arr2 = [4, 6, 30, 31, 45, 51]
 
   let before
@@ -36,3 +36,5 @@ module.exports = () => {
   console.log(merged)
   console.log(`merge = ${after - before}`)
 }
+
+doit();
