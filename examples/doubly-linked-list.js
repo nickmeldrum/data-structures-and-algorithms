@@ -1,22 +1,14 @@
-console.log("linked lists")
-/*
- * pros:
- * insertion/ deletion fast but worst case: O(n)
- * ordered
- *
- * cons:
- * lookup: O(n)
- *
- */
+// 'doubly linked list'
 
 class Node {
   constructor(value) {
     this.value = value
     this.next = null
+    this.previous = null
   }
 }
 
-class LinkedList {
+class DoublyLinkedList {
   constructor(firstValue) {
     this.head = new Node(firstValue)
     this.tail = this.head
@@ -27,6 +19,7 @@ class LinkedList {
     const oldHead = this.head
     this.head = new Node(value)
     this.head.next = oldHead
+    oldHead.previous = this.head
 
     this.length += 1
     return this.head
@@ -59,6 +52,8 @@ class LinkedList {
     const afterNode = beforeNode.next
     beforeNode.next = new Node(value)
     beforeNode.next.next = afterNode
+    beforeNode.next.previous = beforeNode
+    afterNode.previous = beforeNode.next
 
     this.length += 1
     return beforeNode.next
@@ -67,13 +62,14 @@ class LinkedList {
   delete(index) {
     if (index === 0) {
       this.head = this.head.next
+      this.head.previous = null
+      this.length -= 1
       return
     }
     if (index > this.length - 1) {
       return
     }
     const beforeNode = this.moveToIndex(index)
-
     this.deleteAfter(beforeNode)
   }
 
@@ -81,18 +77,25 @@ class LinkedList {
     const oldNext = node.next
     node.next = new Node(value)
     node.next.next = oldNext
+    node.next.previous = node
+    oldNext.previous = node.next
 
     this.length += 1
     return node.next
   }
 
   deleteAfter(node) {
+    const nodeToDelete = node.next
     node.next = node.next.next
+    node.next.previous = node
+    nodeToDelete.next = null
+    nodeToDelete.previous = null
     this.length -= 1
   }
 
   append(value) {
     this.tail.next = new Node(value)
+    this.tail.next.previous = this.tail
     this.tail = this.tail.next
 
     this.length += 1
@@ -108,9 +111,23 @@ class LinkedList {
     } while (current !== null)
     return result.join(' ') + ` length: ${this.length}`
   }
+
+  printPointers() {
+    let current = this.head
+    const result = []
+    do {
+      result.push({
+        value: current.value,
+        next: current.next ? current.next.value : 'null',
+        previous: current.previous ? current.previous.value: 'null',
+      })
+      current = current.next
+    } while (current !== null)
+    return result
+  }
 }
 
-const x = new LinkedList('oh hai')
+const x = new DoublyLinkedList('oh-hai')
 
 x.append('there')
 x.append('world')
@@ -125,9 +142,11 @@ console.log(x.print())
 
 x.insertAfter(x.head, 'wow')
 console.log(x.print())
+console.log('pointers:', x.printPointers())
 
 x.deleteAfter(x.head.next.next)
 console.log(x.print())
+console.log('pointers:', x.printPointers())
 
 x.insert(2, 'wowzer')
 console.log(x.print())
@@ -141,3 +160,9 @@ console.log(x.print())
 x.delete(500000000)
 console.log(x.print())
 
+console.log('pointers:', x.printPointers())
+
+x.reverse()
+console.log(x.print())
+
+console.log('pointers:', x.printPointers())

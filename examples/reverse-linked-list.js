@@ -1,4 +1,4 @@
-console.log("linked lists")
+console.log("reverse a linked list")
 /*
  * pros:
  * insertion/ deletion fast but worst case: O(n)
@@ -108,6 +108,22 @@ class LinkedList {
     } while (current !== null)
     return result.join(' ') + ` length: ${this.length}`
   }
+
+  printPointers() {
+    let current = this.head
+    const result = []
+    do {
+      result.push({
+        value: current.value,
+        next: current.next ? current.next.value : 'null',
+      })
+      current = current.next
+    } while (current !== null)
+    return result
+  }
+
+  reverse() {
+  }
 }
 
 const x = new LinkedList('oh hai')
@@ -138,6 +154,7 @@ console.log(x.print())
 x.insert(20000, 'at-end')
 console.log(x.print())
 
-x.delete(500000000)
+console.log(x.printPointers())
+x.reverse()
+console.log(x.printPointers())
 console.log(x.print())
-
