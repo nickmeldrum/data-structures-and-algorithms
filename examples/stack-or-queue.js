@@ -1,19 +1,23 @@
 class Stack {
   constructor() {
     this.data = []
-    this.length = 0
+  }
+
+  peek() {
+    return this.data[this.data.length - 1]
   }
 
   push(value) {
-    this.data[this.length] = value
-    this.length += 1
+    this.data[this.data.length] = value
   }
 
   pop() {
-    const value = this.data[this.length - 1]
-    delete this.data[this.length - 1]
-    this.length -= 1
+    const value = this.data[this.data.length - 1]
+    this.data.length -= 1
     return value
+  }
+  isEmpty() {
+    return this.length === 0
   }
 }
 
@@ -30,8 +34,73 @@ console.log(stack.data)
 stack.push('universe')
 console.log(stack.data)
 
+console.log(stack.peek())
+console.log(stack.isEmpty())
 console.log(stack.pop())
 console.log(stack.data)
+
+
+
+class LinkedListStack {
+  constructor() {
+    this.head = null
+  }
+
+  createNode(value) {
+    return { value, next: null }
+  }
+
+  peek() {
+    return this.head ? this.head.value : undefined
+  }
+
+  push(value) {
+    const newNode = this.createNode(value)
+    const oldHead = this.head
+    this.head = newNode
+    this.head.next = oldHead
+  }
+
+  pop() {
+    const value = this.peek()
+    if (this.head) {
+      this.head = this.head.next
+    }
+    return value
+  }
+
+  isEmpty() {
+    return this.head === null
+  }
+
+  print() {
+    const results = []
+    let current = this.head
+    while (current) {
+      results.push(current.value)
+      current = current.next
+    }
+    return results
+  }
+}
+
+console.log('linked list stack')
+
+const llstack = new LinkedListStack()
+
+llstack.push('hi')
+llstack.push('world')
+
+console.log(llstack.pop())
+console.log(llstack.print())
+
+llstack.push('universe')
+console.log(llstack.print())
+
+console.log(llstack.peek())
+console.log(llstack.isEmpty())
+console.log(llstack.pop())
+console.log(llstack.print())
 
 
 class Queue {
