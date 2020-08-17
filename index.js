@@ -3,7 +3,7 @@ const fs = require('fs-extra')
 let justRun
 /*
  */
-justRun = 'merge-sorted-arrays.js'
+justRun = 'selection-sort.js'
 
 const runIt = filename => {
   const run = require(`./examples/${filename}`)

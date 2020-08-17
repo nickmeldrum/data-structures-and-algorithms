@@ -23,10 +23,6 @@ function reverseUsingNaiveLoopAndPush(str) {
   return reversed.join('');
 }
 
-function reverseUsingExOr(str) {
-  return str;
-}
-
 function reverseUsingSwap(str) {
   const reversed = new Array(str.length);
   for (let i = 0; i < str.length / 2; i += 1) {
@@ -34,6 +30,10 @@ function reverseUsingSwap(str) {
     reversed[str.length - 1 - i] = str[i];
   }
   return reversed.join('');
+}
+
+function reverseUsingExOr(str) {
+  return str;
 }
 
 function reverseInPlace(str) {
