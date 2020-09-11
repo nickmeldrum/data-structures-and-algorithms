@@ -15,13 +15,22 @@ function countTriplets(arr, r) {
   //
   //
   for (let i = 0; i < arr.length; i += 1) {
-    const next = map.get(arr[i] * r)
-    map.set(arr[i] * r, [[i]])
+    const index = 0
+    const value = arr[i]
+    const hashKey = value
+    const nextHashKey = value * r
 
-    const found = map.get(arr[i])
+    const hashValue = map.get(hashKey)
+    const nextHashValue = map.get(nextHashKey)
 
+    if (hashValue === undefined) hashValue = []
 
-    // TODO: (value in map could already exist
+    hashValue.forEach(arr => {
+
+    })
+
+    hashValue.push([index])
+    map.set(nextHashKey, hashValue)
   }
 
   // loop through map values counting full triplet arrays and return count
