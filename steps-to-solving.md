@@ -30,3 +30,9 @@ space/time tradeoffs
 DIY
 
  * to find the algorithm - try it out yourself on an example to find the algo
+
+Data structure usages:
+
+tries: a graph (directed tree with n branches) - use for word validation problems
+a trie allows you to see if your word is valid very efficiently based on a word list held in the trie.
+
