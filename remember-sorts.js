@@ -74,8 +74,32 @@ run(selectionSort)
 // in place, O(1) space
 // unstable generally, comparison, selection
 
+function merge(a, b) {
+  let aPointer = 0
+  let bPointer = 0
+  let merged = []
+
+  for (let i = 0; i < a.length + b.length; i += 1) {
+    if (b[bPointer] === undefined || a[aPointer] < b[bPointer]) {
+      merged.push(a[aPointer])
+      aPointer += 1
+    } else {
+      merged.push(b[bPointer])
+      bPointer += 1
+    }
+  }
+  return merged
+}
+
 function mergeSort(a) {
-  return a
+  if (a.length <= 1) return a
+
+  const middle = Math.floor(a.length / 2)
+
+  return merge(
+    mergeSort(a.slice(0, middle)),
+    mergeSort(a.slice(middle))
+  )
 }
 run(mergeSort)
 // divide & conquer - compare and swap every 2 elements, then merge 2 into 4, 4into 8 until whole list merged
@@ -83,8 +107,45 @@ run(mergeSort)
 // space: O(n) not in place
 // stable, comparison, merging
 
+function choosePivot(a) {
+  return Math.floor(a.length / 2)
+}
+function sort(pivot, a) {
+  let currentPivotIndex = pivot
+  let leftIndex = 0
+  while (leftIndex < currentPivotIndex) {
+    if (a[leftIndex] < a[currentPivotIndex]) {
+      leftIndex += 1
+    } else {
+      const toMoveRight = a[leftIndex]
+      a[leftIndex] = a[currentPivotIndex - 1]
+      a[currentPivotIndex - 1] = a[currentPivotIndex]
+      a[currentPivotIndex] = toMoveRight
+      currentPivotIndex -= 1
+    }
+  }
+}
+
 function quickSort(a) {
-  return a
+  const pivot = choosePivot(a)
+
+  if (a.length <= 1) return a
+
+  sort(pivot, a)
+
+  const left = a.slice(0, pivot)
+  const right = a.slice(pivot)
+
+  const sortedLeft = quickSort(left)
+  const sortedRight = quickSort(right)
+
+  console.log('splitting', pivot, printableArray(left), '*', printableArray(right))
+  console.log('sorted', pivot, printableArray(sortedLeft), '*', printableArray(sortedRight))
+
+  return quickSort(left).concat(quickSort(right))
 }
 run(quickSort)
-
+// divide and conquer: pick a pivot and move all lesser items to the left and greater to the right. Then sort these sublists
+// worst case: O(n log n)
+// space: usually in place, with O(n) stack space
+// unstable, comparison, partitioning
