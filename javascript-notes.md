@@ -23,3 +23,17 @@ how to safely know if something is a number?
 how to safely know if something is an integer?
 
 no such thing as an integer in javascript!
+
+
+## Sets and Maps
+
+set = only unique items
+
+methods: add, delete, has, entries, forEach
+props: size
+
+Map = hashtable
+
+methods: get, set, has, delete, entries, keys, values, forEach
+props: size
+
